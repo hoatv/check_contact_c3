@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Get C3";
+}
+<br />
+
+<form method="post" enctype="multipart/form-data">
+    <div class="row">
+        <div class=col-md-6>
+            <input type="file" name="files" id="files" />
+
+            @*<button id="browseFile" class="btn-default" type="submit">Browse file</button>*@
+        </div>
+    </div>
+    <div class="row">
+        <div class=col-md-12>
+            @{if (ViewBag.Error != null)
+                {
+                    <p>@ViewBag.Error</p>
+                }
+            }
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class=col-md-6>
+            @*<button class=btn-default>To Excel</button>*@
+            <button class="btn btn-primary" type="submit">Export file</button>
+            @*<input type="submit" value="ReadLogFile" />*@
+        </div>
+    </div>
+</form>
+
+

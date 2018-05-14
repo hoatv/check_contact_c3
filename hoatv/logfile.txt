@@ -1,0 +1,45 @@
+[10.80.10.3 2018-02-27 00:00:50] Array
+(
+    [name] => ชื่จิตร ภูพิทอง
+    [phone] => 0806608468
+    [email] => cheunjittong536@gmail.com
+    [age] => 31
+    [id_camp_landingpage] => 24821
+    [code_chanel] => TET01_CK_Conversion_Sal.S.TI.009 - BKK_01
+)
+
+[10.80.10.3 2018-02-27 00:00:57] stdClass Object
+(
+    [status] => 1
+    [msg] => Cám ơn bạn đã đăng ký. Chúng tôi sẽ liên hệ tư vấn sớm nhất tới bạn!
+    [redirect] => /thank-you.php
+)
+
+[10.80.10.3 2018-02-27 00:02:54] Array
+(
+    [name] => ระวีนันท์ วรรณรัตน์
+    [phone] => 0960185809
+    [email] => raweenan2518@gmail.co
+    [age] => 31
+    [id_camp_landingpage] => 22749
+    [code_chanel] => TET06_NOOK_ENGTODAY_Q
+)
+
+[10.80.10.3 2018-02-27 00:03:01] stdClass Object
+(
+    [status] => 1
+    [msg] => Cám ơn bạn đã đăng ký. Chúng tôi sẽ liên hệ tư vấn sớm nhất tới bạn!
+    [redirect] => /thank-you.php
+)
+
+[10.80.10.3 2018-02-27 00:03:48] Array
+(
+    [name] => ภิชญาภา
+    [phone] => 0944525456
+    [email] => pichayapa54@gmail.com
+    [age] => 31
+    [id_camp_landingpage] => 25012
+    [code_chanel] => TET05_KORN_conversion_BKK_Dra.L.TI.029
+)
+
+

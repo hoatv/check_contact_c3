@@ -1,0 +1,11 @@
+/Users/mac/Projects/hoatv/hoatv/bin/Debug/netcoreapp2.0/hoatv.deps.json
+/Users/mac/Projects/hoatv/hoatv/bin/Debug/netcoreapp2.0/hoatv.runtimeconfig.json
+/Users/mac/Projects/hoatv/hoatv/bin/Debug/netcoreapp2.0/hoatv.runtimeconfig.dev.json
+/Users/mac/Projects/hoatv/hoatv/bin/Debug/netcoreapp2.0/hoatv.dll
+/Users/mac/Projects/hoatv/hoatv/bin/Debug/netcoreapp2.0/hoatv.pdb
+/Users/mac/Projects/hoatv/hoatv/obj/Debug/netcoreapp2.0/hoatv.csproj.CoreCompileInputs.cache
+/Users/mac/Projects/hoatv/hoatv/obj/Debug/netcoreapp2.0/hoatv.AssemblyInfoInputs.cache
+/Users/mac/Projects/hoatv/hoatv/obj/Debug/netcoreapp2.0/hoatv.AssemblyInfo.cs
+/Users/mac/Projects/hoatv/hoatv/obj/Debug/netcoreapp2.0/hoatv.dll
+/Users/mac/Projects/hoatv/hoatv/obj/Debug/netcoreapp2.0/hoatv.pdb
+/Users/mac/Projects/hoatv/hoatv/obj/Debug/netcoreapp2.0/hoatv.csprojResolveAssemblyReference.cache
