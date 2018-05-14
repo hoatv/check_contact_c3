@@ -353,7 +353,7 @@ namespace hoatv.Controllers
 			UserCredential credential;
 
 			using (var stream =
-				new FileStream("../client_secret.json", FileMode.Open, FileAccess.Read))
+				new FileStream("client_secret.json", FileMode.Open, FileAccess.Read))
 			{
 				string credPath = System.Environment.GetFolderPath(
 					System.Environment.SpecialFolder.Personal);

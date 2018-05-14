@@ -1,0 +1,12 @@
+/Users/mac/Projects/hoatv/hoatv
+--output-path=obj/Debug/netcoreapp2.0/
+--application-name=hoatv
+--content-root=/Users/mac/Projects/hoatv/hoatv
+--file=/Users/mac/Projects/hoatv/hoatv/Views/Home/About.cshtml
+--file=/Users/mac/Projects/hoatv/hoatv/Views/Home/Contact.cshtml
+--file=/Users/mac/Projects/hoatv/hoatv/Views/Home/Index.cshtml
+--file=/Users/mac/Projects/hoatv/hoatv/Views/Shared/Error.cshtml
+--file=/Users/mac/Projects/hoatv/hoatv/Views/Shared/_Layout.cshtml
+--file=/Users/mac/Projects/hoatv/hoatv/Views/Shared/_ValidationScriptsPartial.cshtml
+--file=/Users/mac/Projects/hoatv/hoatv/Views/_ViewImports.cshtml
+--file=/Users/mac/Projects/hoatv/hoatv/Views/_ViewStart.cshtml
