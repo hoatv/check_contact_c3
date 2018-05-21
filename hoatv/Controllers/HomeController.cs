@@ -22,6 +22,8 @@ using System.Net.Http.Headers;
 using Microsoft.Extensions.FileProviders;
 using System.Text.RegularExpressions;
 using System.Globalization;
+using Google.Apis.Auth.OAuth2.Flows;
+using Google.Apis.Auth.OAuth2.Responses;
 
 namespace hoatv.Controllers
 {
@@ -63,10 +65,10 @@ namespace hoatv.Controllers
 			var listContactFromLog = GetListContactFromLogFile(listInventory, files, ref compareDate);
 
 			string sWebRootFolder = _hostingEnvironment.WebRootPath;
-			string fileName = @"ContactC3_"+compareDate+""+".xlsx";
+			string fileName = @"ContactC3_" + compareDate + "" + ".xlsx";
 			string URL = string.Format("{0}://{1}/{2}", Request.Scheme, Request.Host, fileName);
 
-			String link = ExportListContact(listContactFromLog, sWebRootFolder, fileName, URL,compareDate);
+			String link = ExportListContact(listContactFromLog, sWebRootFolder, fileName, URL, compareDate);
 			FileInfo file = new FileInfo(Path.Combine(sWebRootFolder, link));
 
 			return downloadFile(sWebRootFolder, fileName);
@@ -119,23 +121,23 @@ namespace hoatv.Controllers
 				// add a new worksheet to the empty workbook
 				ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Contacts");
 				//First add the headers
-				Image img = Image.FromFile(@"topica_logo.jpg");
-				ExcelPicture pic = worksheet.Drawings.AddPicture("Picture_Name", img);
-				pic.SetSize(250, 65);
-				pic.SetPosition(1, 0, 0, 0);
-				worksheet.Cells[2, 4].Value = "Statistics list of contact";
-				worksheet.Cells[2, 4].Style.Font.Name = "Arial";
-				worksheet.Cells[2, 4].Style.Font.Size = 28;
-				worksheet.Cells[2, 4].Style.Font.Color.SetColor(System.Drawing.ColorTranslator.FromHtml("#7F0F19"));
-				worksheet.Cells[2, 4].Style.Font.Bold = true;
+				//Image img = Image.FromFile(@"topica_logo.jpg");
+				//ExcelPicture pic = worksheet.Drawings.AddPicture("Picture_Name", img);
+				//pic.SetSize(250, 65);
+				//pic.SetPosition(1, 0, 0, 0);
+				worksheet.Cells[2, 2].Value = "Statistics list of contact";
+				worksheet.Cells[2, 2].Style.Font.Name = "Arial";
+				worksheet.Cells[2, 2].Style.Font.Size = 28;
+				worksheet.Cells[2, 2].Style.Font.Color.SetColor(System.Drawing.ColorTranslator.FromHtml("#7F0F19"));
+				worksheet.Cells[2, 2].Style.Font.Bold = true;
 
-				worksheet.Cells[3, 5].Value = compareDate;
-				worksheet.Cells[3, 5].Style.Font.Name = "Arial";
-				worksheet.Cells[3, 5].Style.Font.Size = 15;
+				worksheet.Cells[3, 3].Value = compareDate;
+				worksheet.Cells[3, 3].Style.Font.Name = "Arial";
+				worksheet.Cells[3, 3].Style.Font.Size = 15;
 				//worksheet.Cells[3, 5].Style.Font.Color.SetColor(System.Drawing.ColorTranslator.FromHtml("#7F0F19"));
 				//worksheet.Cells[3, 5].Style.Font.Bold = true;
 
-				for (int i = 1; i < 25; i++)
+				for (int i = 1; i < 6; i++)
 				{
 					worksheet.Cells[6, i].Style.Font.Name = "Arial";
 					worksheet.Cells[6, i].Style.Font.Size = 12;
@@ -145,68 +147,70 @@ namespace hoatv.Controllers
 					worksheet.Cells[6, i].Style.Fill.BackgroundColor.SetColor(ColorTranslator.FromHtml("#7F0F19"));
 				}
 
-				worksheet.Cells[6, 1].Value = "No.";
-				worksheet.Cells[6, 2].Value = "Name";
+				//worksheet.Cells[6, 1].Value = "No.";
+				worksheet.Cells[6, 1].Value = "Name";
+				worksheet.Cells[6, 2].Value = "Phone";
 				worksheet.Cells[6, 3].Value = "Email";
-				worksheet.Cells[6, 4].Value = "Phone";
-				worksheet.Cells[6, 5].Value = "Address";
-				worksheet.Cells[6, 6].Value = "Education level";
-				worksheet.Cells[6, 7].Value = "Major";
-				worksheet.Cells[6, 8].Value = "Time";
-				worksheet.Cells[6, 9].Value = "Campaigns";
-				worksheet.Cells[6, 10].Value = "Landing page";
-				worksheet.Cells[6, 11].Value = "Chanels";
-				worksheet.Cells[6, 12].Value = "Ads";
-				worksheet.Cells[6, 13].Value = "Keyword";
-				worksheet.Cells[6, 14].Value = "Site source";
-				worksheet.Cells[6, 15].Value = "Teacher link";
-				worksheet.Cells[6, 16].Value = "ContactID";
-				worksheet.Cells[6, 17].Value = "DOB";
-				worksheet.Cells[6, 18].Value = "Age";
-				worksheet.Cells[6, 19].Value = "Line ID";
-				worksheet.Cells[6, 20].Value = "Status_regis";
-				worksheet.Cells[6, 21].Value = "Time_tuvan";
-				worksheet.Cells[6, 22].Value = "Credit_card";
-				worksheet.Cells[6, 23].Value = "Value_computer";
-				worksheet.Cells[6, 24].Value = "Url tracking";
+				worksheet.Cells[6, 4].Value = "Age";
+				worksheet.Cells[6, 5].Value = "Url tracking";
 
+				//worksheet.Cells[6, 5].Value = "Address";
+				//worksheet.Cells[6, 6].Value = "Education level";
+				//worksheet.Cells[6, 7].Value = "Major";
+				//worksheet.Cells[6, 8].Value = "Time";
+				//worksheet.Cells[6, 9].Value = "Campaigns";
+				//worksheet.Cells[6, 10].Value = "Landing page";
+				//worksheet.Cells[6, 11].Value = "Chanels";
+				//worksheet.Cells[6, 12].Value = "Ads";
+				//worksheet.Cells[6, 13].Value = "Keyword";
+				//worksheet.Cells[6, 14].Value = "Site source";
+				//worksheet.Cells[6, 15].Value = "Teacher link";
+				//worksheet.Cells[6, 16].Value = "ContactID";
+				//worksheet.Cells[6, 17].Value = "DOB";
+				//worksheet.Cells[6, 18].Value = "Age";
+				//worksheet.Cells[6, 19].Value = "Line ID";
+				//worksheet.Cells[6, 20].Value = "Status_regis";
+				//worksheet.Cells[6, 21].Value = "Time_tuvan";
+				//worksheet.Cells[6, 22].Value = "Credit_card";
+				//worksheet.Cells[6, 23].Value = "Value_computer";
+				//worksheet.Cells[6, 24].Value = "Url tracking";
+
+				worksheet.Column(1).Width = 25;
 				worksheet.Column(2).Width = 25;
 				worksheet.Column(3).Width = 25;
 				worksheet.Column(4).Width = 20;
 				worksheet.Column(5).Width = 20;
-				worksheet.Column(6).Width = 20;
-				worksheet.Column(7).Width = 20;
-				worksheet.Column(8).Width = 20;
-				worksheet.Column(9).Width = 20;
-				worksheet.Column(10).Width = 20;
-				worksheet.Column(11).Width = 20;
-				worksheet.Column(12).Width = 20;
-				worksheet.Column(13).Width = 20;
-				worksheet.Column(14).Width = 20;
-				worksheet.Column(15).Width = 20;
-				worksheet.Column(16).Width = 20;
-				worksheet.Column(17).Width = 20;
-				worksheet.Column(18).Width = 20;
-				worksheet.Column(19).Width = 20;
-				worksheet.Column(20).Width = 20;
-				worksheet.Column(21).Width = 20;
-				worksheet.Column(22).Width = 20;
-				worksheet.Column(23).Width = 20;
-				worksheet.Column(24).Width = 30;
+				//worksheet.Column(6).Width = 20;
+				//worksheet.Column(7).Width = 20;
+				//worksheet.Column(8).Width = 20;
+				//worksheet.Column(9).Width = 20;
+				//worksheet.Column(10).Width = 20;
+				//worksheet.Column(11).Width = 20;
+				//worksheet.Column(12).Width = 20;
+				//worksheet.Column(13).Width = 20;
+				//worksheet.Column(14).Width = 20;
+				//worksheet.Column(15).Width = 20;
+				//worksheet.Column(16).Width = 20;
+				//worksheet.Column(17).Width = 20;
+				//worksheet.Column(18).Width = 20;
+				//worksheet.Column(19).Width = 20;
+				//worksheet.Column(20).Width = 20;
+				//worksheet.Column(21).Width = 20;
+				//worksheet.Column(22).Width = 20;
+				//worksheet.Column(23).Width = 20;
+				//worksheet.Column(24).Width = 30;
 
 				int startIndex = 7;
 				for (int i = 0; i < listContactFromLog.Count; i++)
 				{
-					String a = "A" + (startIndex + i);
-					worksheet.Cells["A" + (startIndex + i)].Value = (i + 1);
-					worksheet.Cells["B" + (startIndex + i)].Value = listContactFromLog[i].Name;
+					//String a = "A" + (startIndex + i);
+					//worksheet.Cells["A" + (startIndex + i)].Value = (i + 1);
+					worksheet.Cells["A" + (startIndex + i)].Value = listContactFromLog[i].Name;
+					worksheet.Cells["B" + (startIndex + i)].Value = listContactFromLog[i].Phone;
 					worksheet.Cells["C" + (startIndex + i)].Value = listContactFromLog[i].Email;
-					worksheet.Cells["D" + (startIndex + i)].Value = listContactFromLog[i].Phone;
-					worksheet.Cells["R" + (startIndex + i)].Value = listContactFromLog[i].Age.Replace("??", "").Replace("ปี", "");
-					worksheet.Cells["X" + (startIndex + i)].Value = listContactFromLog[i].CodeChanel;
+					worksheet.Cells["D" + (startIndex + i)].Value = listContactFromLog[i].Age.Replace("??", "").Replace("ปี", "");
+					worksheet.Cells["E" + (startIndex + i)].Value = listContactFromLog[i].CodeChanel;
 				}
-
-
 				package.Save(); //Save the workbook.
 			}
 			return URL;
@@ -258,7 +262,7 @@ namespace hoatv.Controllers
 								contact.Name = Remove(line, keyItem);
 								break;
 							case "[phone] =>":
-								contact.Phone = Remove(line, keyItem);
+								contact.Phone = Remove(line, keyItem).Substring(1); // remove zero
 								break;
 							case "[email] =>":
 								contact.Email = Remove(line, keyItem);
@@ -297,14 +301,15 @@ namespace hoatv.Controllers
 
 		private bool IsPhoneExistsInInventory(String phone, List<String> listPhoneInventory)
 		{
+			bool result = false;
 			foreach (var item in listPhoneInventory)
 			{
-				if (item.Contains(phone) || phone.Contains(item))
+				if (phone.Equals(item))
 				{
 					return true;
 				}
 			}
-			return false;
+			return result;
 		}
 
 		private String Remove(String input, String key)
@@ -340,8 +345,9 @@ namespace hoatv.Controllers
 				{
 					//listResult.Add(row[3].ToString()); // Only get phone number from inventory
 					//listResult.Add(row[0].ToString()); // Only get phone number from inventory
-					if (!string.IsNullOrEmpty(row[0].ToString())){
-						listResult.Add(row[0].ToString());
+					if (!string.IsNullOrEmpty(row[2].ToString()))
+					{
+						listResult.Add(row[2].ToString());
 					}
 				}
 			}
@@ -350,22 +356,11 @@ namespace hoatv.Controllers
 
 		private void GoogleService()
 		{
-			UserCredential credential;
-
-			using (var stream =
-				new FileStream("client_secret.json", FileMode.Open, FileAccess.Read))
+			GoogleCredential credential;
+			using (var stream = new FileStream("../checkcontact_01.json", FileMode.Open, FileAccess.Read))
 			{
-				string credPath = System.Environment.GetFolderPath(
-					System.Environment.SpecialFolder.Personal);
-				credPath = Path.Combine(credPath, ".credentials/sheets.googleapis.com-dotnet-quickstart.json");
-
-				credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
-					GoogleClientSecrets.Load(stream).Secrets,
-					Scopes,
-					"user",
-					CancellationToken.None,
-					new FileDataStore(credPath, true)).Result;
-				Console.WriteLine("Credential file saved to: " + credPath);
+				credential = GoogleCredential.FromStream(stream)
+					.CreateScoped(Scopes);
 			}
 
 			// Create Google Sheets API service.
@@ -374,15 +369,6 @@ namespace hoatv.Controllers
 				HttpClientInitializer = credential,
 				ApplicationName = ApplicationName,
 			});
-		}
-
-
-
-
-
-		public IActionResult Error()
-		{
-			return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
 		}
 	}
 }

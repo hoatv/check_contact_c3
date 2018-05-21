@@ -4,9 +4,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hoatv", "hoatv\hoatv.csproj", "{00D8556A-DF28-42D2-B897-C566611833A8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BD49488A-BE3C-4C6B-8CBC-ED368857E55C}"
-	ProjectSection(SolutionItems) = preProject
-		client_secret.json = client_secret.json
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

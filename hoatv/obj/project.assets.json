@@ -13190,13 +13190,13 @@
       "projectName": "hoatv",
       "projectPath": "/Users/mac/Projects/hoatv/hoatv/hoatv.csproj",
       "packagesPath": "/Users/mac/.nuget/packages/",
-      "outputPath": "/Users/mac/Projects/hoatv/hoatv/obj/",
+      "outputPath": "/Users/mac/Projects/hoatv/hoatv/obj",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/mac/.nuget/NuGet/NuGet.Config"
+        "/Users/mac/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
@@ -13218,22 +13218,23 @@
     "frameworks": {
       "netcoreapp2.0": {
         "dependencies": {
+          "Microsoft.NETCore.App": {
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "2.0",
+            "autoReferenced": true
+          },
           "EPPlus.Core": {
             "target": "Package",
-            "version": "[1.5.4, )"
+            "version": "1.5.4"
           },
           "Google.Apis.Sheets.v4": {
             "target": "Package",
-            "version": "[1.33.0.1218, )"
+            "version": "1.33.0.1218"
           },
           "Microsoft.AspNetCore.All": {
             "target": "Package",
-            "version": "[2.0.0, )"
-          },
-          "Microsoft.NETCore.App": {
-            "target": "Package",
-            "version": "[2.0.0, )",
-            "autoReferenced": true
+            "version": "2.0.0"
           }
         },
         "imports": [
